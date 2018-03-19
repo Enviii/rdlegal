@@ -12,8 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->action(
+        'SummaryController@index'
+    );
 });
 
 Route::resource('summary', 'SummaryController');
 Route::resource('transaction', 'TransactionController');
+Route::post('transaction', "TransactionController@getNegativeTransaction");
