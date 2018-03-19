@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('custom-css')
-    <link href="{!! asset('css/summary.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/summary.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -30,7 +30,7 @@
     					@foreach ($summary['year'] as $key => $value)
     					<tr>
     						<td>{{ number_format($value->quantity_sum) }}</td>
-    						<td>${{ number_format($value->transaction_amount_sum) }}</td>
+    						<td>{{ $value->transaction_amount_sum < 0 ? "-$" . number_format(abs($value->transaction_amount_sum)) : "$" . number_format($value->transaction_amount_sum) }}</td>
     						<td>{{ $value->year }}</td>
     					</tr>
     					@endforeach
@@ -53,7 +53,7 @@
     					@foreach ($summary['quarter'] as $key => $value)
     					<tr>
     						<td>{{ number_format($value->quantity_sum) }}</td>
-    						<td>${{ number_format($value->transaction_amount_sum) }}</td>
+    						<td>{{ $value->transaction_amount_sum < 0 ? "-$" . number_format(abs($value->transaction_amount_sum)) : "$" . number_format($value->transaction_amount_sum) }}</td>
     						<td>Q{{ $value->quarter }} {{ $value->year }}</td>
     					</tr>
     					@endforeach
@@ -76,7 +76,7 @@
     					@foreach ($summary['month'] as $key => $value)
     					<tr>
     						<td>{{ number_format($value->quantity_sum) }}</td>
-    						<td>${{ number_format($value->transaction_amount_sum) }}</td>
+    						<td>{{ $value->transaction_amount_sum < 0 ? "-$" . number_format(abs($value->transaction_amount_sum)) : "$" . number_format($value->transaction_amount_sum) }}</td>
     						<td>{{ date('M Y', strtotime($value->year . "-" . $value->month . "-1")) }}</td>
     					</tr>
     					@endforeach
@@ -100,7 +100,7 @@
     					@foreach ($summary['week'] as $key => $value)
     					<tr>
     						<td>{{ number_format($value->quantity_sum) }}</td>
-    						<td>${{ number_format($value->transaction_amount_sum) }}</td>
+    						<td>{{ $value->transaction_amount_sum < 0 ? "-$" . number_format(abs($value->transaction_amount_sum)) : "$" . number_format($value->transaction_amount_sum) }}</td>
     						<td>{{ $value->week }}</td>
     						<td>{{ $value->year }}</td>
     					</tr>

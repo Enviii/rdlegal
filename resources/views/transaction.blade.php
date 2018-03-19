@@ -55,8 +55,8 @@
                                 <tr>
                                     <td>{{ $value->transaction_id }}</td>
                                     <td>{{ $value->customer_id }}</td>
-                                    <td>{{ $value->quantity }}</td>
-                                    <td>${{ $value->transaction_amount }}</td>
+                                    <td>{{ number_format($value->quantity) }}</td>
+                                    <td>{{ $value->transaction_amount < 0 ? "-$" . number_format(abs($value->transaction_amount)) : "$" . number_format($value->transaction_amount) }}</td>
                                     <td>{{ $value->transaction_date }}</td>
     							</tr>
                             @endforeach
