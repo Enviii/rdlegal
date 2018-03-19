@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('custom-css')
-    <link href="{!! asset('css/transaction.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/transaction.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
